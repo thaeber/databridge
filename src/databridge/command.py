@@ -11,20 +11,24 @@ def strip_ansi(text):
     return re.sub(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])", "", text)
 
 
-def execute_shell_command(command: str):
+def execute_shell_command(command: str, dry_run: bool = False) -> int:
     """
-    Execute a given shell command and return its exit code, stdout, and stderr.
+    Execute a given shell command and return its exit code.
 
     Args:
         command: The shell command to execute as a string.
+        dry_run: If True, the command will be logged but not executed.
 
     Returns:
-        A tuple containing (exit_code, stdout, stderr).
+        The exit code of the command.
     """
     _logger_.info(f"Executing shell command: {command}")
     parts = shlex.split(command)
     _logger_.debug(f"Command parts: {parts}")
 
+    if dry_run:
+        _logger_.warning("[red]Dry run enabled. Command will not be executed.[/red]")
+        return 0
     # use PtyProcess to spawn the command and capture its output
     proc = PtyProcess.spawn(parts)
 

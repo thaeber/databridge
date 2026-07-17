@@ -55,7 +55,10 @@ def get_task(task: omegaconf.DictConfig):
                 dry_run=ctx.params.get("dry_run", False) if ctx else False,
             )
         case "execute_shell_command":
-            return lambda value: execute_shell_command(task.command)
+            return lambda value: execute_shell_command(
+                task.command,
+                dry_run=ctx.params.get("dry_run", False) if ctx else False,
+            )
         case _:
             return lambda value: list(value)  # No operation for unrecognized tasks
 
