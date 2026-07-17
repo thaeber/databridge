@@ -51,8 +51,8 @@ def get_task(task: omegaconf.DictConfig):
             return lambda value: copy_files(
                 value,
                 destination=task.target,
-                relative_to=task.get('relative_to', None),
-                dry_run=ctx.params.get('dry_run', False) if ctx else False,
+                relative_to=task.get("relative_to", None),
+                dry_run=ctx.params.get("dry_run", False) if ctx else False,
             )
         case "execute_shell_command":
             return lambda value: execute_shell_command(task.command)
@@ -69,43 +69,43 @@ def process_task_group(group: omegaconf.ListConfig):
 
 
 @click.command()
-@click.version_option(package_name='databridge')
+@click.version_option(package_name="databridge")
 @click.option(
-    '--config',
-    default='config.yaml',
-    type=click.File('r', lazy=True),
-    help='Path to the configuration file.',
+    "--config",
+    default="config.yaml",
+    type=click.File("r", lazy=True),
+    help="Path to the configuration file.",
     show_default=True,
 )
 @click.option(
-    '--destination',
-    default='.',
-    help='Destination directory for collected data.',
+    "--destination",
+    default=".",
+    help="Destination directory for collected data.",
     type=click.Path(file_okay=False, dir_okay=True, writable=True),
     show_default=True,
 )
 @click.option(
-    '--start',
-    default='today',
-    help='Start date for filtering files.',
+    "--start",
+    default="today",
+    help="Start date for filtering files.",
     type=DatetimeParamType(),
     show_default=True,
 )
 @click.option(
-    '--end',
+    "--end",
     default=None,
-    help='End date for filtering files.',
+    help="End date for filtering files.",
     type=DatetimeParamType(),
     callback=end_output_callback,
     show_default="same as --start if not provided",
 )
 @click.option(
-    '--dry-run',
+    "--dry-run",
     is_flag=True,
     default=False,
-    help='Perform a dry run without copying files.',
+    help="Perform a dry run without copying files.",
 )
-@click.option('--user', default=None, help='Username for remote server authentication.')
+@click.option("--user", default=None, help="Username for remote server authentication.")
 def cli(
     config,
     destination: str,
@@ -120,21 +120,21 @@ def cli(
     management and backup."""
 
     # load configuration from the specified file
-    _logger_.info(f'Loading configuration from {config.name}')
+    _logger_.info(f"Loading configuration from {config.name}")
     conf = omegaconf.OmegaConf.load(config)
-    assert isinstance(conf, omegaconf.DictConfig), 'Configuration must be a DictConfig'
+    assert isinstance(conf, omegaconf.DictConfig), "Configuration must be a DictConfig"
 
     # inject command line parameters into the configuration
-    _logger_.info(f'Injecting command line parameters into configuration')
+    _logger_.info("Injecting command line parameters into configuration")
     yaml = omegaconf.OmegaConf.to_yaml(conf, resolve=True).format(
         destination=destination, start=start, end=end, user=user
     )
     conf = omegaconf.OmegaConf.create(yaml)
-    _logger_.info(f'Configuration after injection:\n{yaml}')
+    _logger_.info(f"Configuration after injection:\n{yaml}")
 
     # process task groups defined in the configuration
-    for key in conf['groups']:  # type: ignore
-        _logger_.info(f'Processing task group: [bold]{key}[/bold]')
-        group = conf['groups'][key]  # type: ignore
+    for key in conf["groups"]:  # type: ignore
+        _logger_.info(f"Processing task group: [bold]{key}[/bold]")
+        group = conf["groups"][key]  # type: ignore
         # assert isinstance(group, omegaconf.ListConfig)
         process_task_group(group)

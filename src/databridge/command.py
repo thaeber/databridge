@@ -8,7 +8,7 @@ _logger_ = logging.getLogger(__name__)
 
 
 def strip_ansi(text):
-    return re.sub(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])', '', text)
+    return re.sub(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])", "", text)
 
 
 def execute_shell_command(command: str):

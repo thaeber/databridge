@@ -80,7 +80,7 @@ def copy_files(
     _logger_.info(f"Copying files to {destination}")
     if dry_run:
         _logger_.warning(
-            f"\t[red]...[bold]DRY RUN[/bold]: No files will be copied.[/red]"
+            "\t[red]...[bold]DRY RUN[/bold]: No files will be copied.[/red]"
         )
     destination = Path(destination)
     if not destination.exists():
