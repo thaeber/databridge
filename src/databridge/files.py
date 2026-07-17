@@ -3,6 +3,7 @@ from collections.abc import Iterable
 import logging
 from pathlib import Path
 from datetime import datetime, date
+from shutil import copy2
 
 import dateparser
 
@@ -100,4 +101,4 @@ def copy_files(
             if not dry_run:
                 dest_file.parent.mkdir(parents=True, exist_ok=True)
         if not dry_run:
-            dest_file.write_bytes(file.read_bytes())
+            copy2(file, dest_file)
