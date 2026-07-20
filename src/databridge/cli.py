@@ -120,9 +120,7 @@ def process_task_group(group: omegaconf.ListConfig):
 @click.option("--user", default=None, help="Username for remote server authentication.")
 @click.option(
     "--password",
-    prompt=True,
     hide_input=True,
-    default=None,
     help="Password for remote server authentication.",
 )
 def cli(

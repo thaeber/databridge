@@ -2,12 +2,14 @@ import logging
 import shlex
 from pathlib import Path
 
+import click
 from fabric import Connection
+from paramiko.ssh_exception import AuthenticationException, SSHException
 from rich.progress import (
-    TextColumn,
-    Progress,
     BarColumn,
+    Progress,
     TaskProgressColumn,
+    TextColumn,
     TimeRemainingColumn,
 )
 
@@ -28,7 +30,17 @@ def scp_command(
         target = Path(target)
 
     _logger_.info(f"Connecting to {host} as {user}")
-    connection = Connection(host=host, user=user, connect_kwargs={"password": password})
+    try:
+        connection = Connection(host=host, user=user)
+    except AuthenticationException as e:
+        if password is None:
+            password = click.prompt(
+                "Password for remote server authentication",
+                hide_input=True,
+            )
+        connection = Connection(
+            host=host, user=user, connect_kwargs={"password": password}
+        )
 
     # create the destination directory if it doesn't exist
     _logger_.info(f"Creating destination directory {target} on {host}")
