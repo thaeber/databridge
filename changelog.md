@@ -1,4 +1,12 @@
 <!-- insertion marker -->
+<a name="v0.4.7"></a>
+
+## [v0.4.7](https://github.com/thaeber/databridge/compare/v0.4.6...v0.4.7) (2026-07-20)
+
+### Features
+
+- Add actual bytes sent to progress ([80f6449](https://github.com/thaeber/databridge/commit/80f6449382bd2bf06a68d4c61cd5e29e32f1361e))
+
 <a name="v0.4.6"></a>
 
 ## [v0.4.6](https://github.com/thaeber/databridge/compare/v0.4.5...v0.4.6) (2026-07-20)
