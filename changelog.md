@@ -1,4 +1,11 @@
 <!-- insertion marker -->
+<a name="v0.4.5"></a>
+
+## [v0.4.5](https://github.com/thaeber/databridge/compare/v0.4.4...v0.4.5) (2026-07-20)
+
+### Bug Fixes
+
+- Align units of progress for file uploads ([6505fdf](https://github.com/thaeber/databridge/commit/6505fdfaa22fa50af0a6dcc673c563b897890e70))
 
 <a name="v0.4.4"></a>
 
@@ -52,3 +59,4 @@
 
 - Enable --dry-run option from shell commands ([92b3d05](https://github.com/thaeber/databridge/commit/92b3d058c85665657d3f5ed5b11597134dbf2463))
 - Preserve file attributes on copy ([eab8fba](https://github.com/thaeber/databridge/commit/eab8fbabecb470dea16e413a7fe6b8be127b601e))
+
