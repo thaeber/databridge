@@ -1,4 +1,16 @@
 <!-- insertion marker -->
+<a name="v0.4.4"></a>
+
+## [v0.4.4](https://github.com/thaeber/databridge/compare/v0.4.3...v0.4.4) (2026-07-20)
+
+### Bug Fixes
+
+- Add log message after file upload ([bceca58](https://github.com/thaeber/databridge/commit/bceca5813e3309b57e63c9cdfc1c74506cc9ac85))
+
+<a name="v0.4.3"></a>
+
+## [v0.4.3](https://github.com/thaeber/databridge/compare/v0.4.2...v0.4.3) (2026-07-20)
+
 <a name="v0.4.2"></a>
 
 ## [v0.4.2](https://github.com/thaeber/databridge/compare/v0.4.1...v0.4.2) (2026-07-20)
