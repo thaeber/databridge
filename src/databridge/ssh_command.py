@@ -94,6 +94,7 @@ def scp_command(
                     remote_path,
                     callback=lambda sent, total: progress.update(
                         current_task,
+                        description=f"[green]Uploading {rel.name} ({sent} bytes sent of {total} bytes)",
                         current=sent,
                         total=total,
                     ),
