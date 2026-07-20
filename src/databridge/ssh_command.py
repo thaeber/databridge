@@ -32,6 +32,7 @@ def scp_command(
     _logger_.info(f"Connecting to {host} as {user}")
     try:
         connection = Connection(host=host, user=user)
+        connection.open()
     except (AuthenticationException, SSHException) as e:
         if password is None:
             password = click.prompt(
