@@ -64,6 +64,12 @@ def scp_command(
             total=len(files),
         )
         for path in files:
+            progress.update(
+                total_task,
+                advance=1,
+                description=f"[cyan]Uploading files ({progress.tasks[total_task].completed}/{len(files)})",
+            )
+
             rel = path.relative_to(source)
             remote_path = (target / rel).as_posix()
 
@@ -87,16 +93,19 @@ def scp_command(
                     str(path),
                     remote_path,
                     callback=lambda sent, total: progress.update(
-                        current_task, advance=sent
+                        current_task,
+                        advance=sent,
+                        total=total,
                     ),
                 )
-            progress.update(
-                total_task,
-                advance=1,
-                description=f"[cyan]Uploading files ({progress.tasks[total_task].completed}/{len(files)})",
-            )
+
             _logger_.info(f"Uploaded 'file://{rel}'")
 
+        progress.update(
+            total_task,
+            current=len(files),
+            description=f"[cyan]Uploading files ({len(files)}/{len(files)})",
+        )
         progress.remove_task(current_task)
 
     # close the connection
