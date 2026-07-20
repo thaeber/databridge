@@ -1,4 +1,12 @@
 <!-- insertion marker -->
+<a name="v0.4.8"></a>
+
+## [v0.4.8](https://github.com/thaeber/databridge/compare/v0.4.7...v0.4.8) (2026-07-20)
+
+### Bug Fixes
+
+- Renamed misspelled keyword argument ([5cff850](https://github.com/thaeber/databridge/commit/5cff850fbcd619af626e36aca11abee59a22fc2f))
+
 <a name="v0.4.7"></a>
 
 ## [v0.4.7](https://github.com/thaeber/databridge/compare/v0.4.6...v0.4.7) (2026-07-20)
