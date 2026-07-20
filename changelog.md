@@ -1,4 +1,12 @@
 <!-- insertion marker -->
+<a name="v0.4.1"></a>
+
+## [v0.4.1](https://github.com/thaeber/databridge/compare/v0.4.0...v0.4.1) (2026-07-20)
+
+### Bug Fixes
+
+- Catch SSHException ([0e74733](https://github.com/thaeber/databridge/commit/0e7473396fb6cf19889b438c70c15687112bc77c))
+
 <a name="v0.4.0"></a>
 
 ## [v0.4.0](https://github.com/thaeber/databridge/compare/v0.3.0...v0.4.0) (2026-07-20)
