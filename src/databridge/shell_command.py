@@ -43,7 +43,7 @@ def execute_shell_command(command: str, dry_run: bool = False) -> int:
                 if data:
                     _logger_.info(data)
 
-                if 'password' in data.lower():
+                if "password" in data.lower():
                     password = getpass.getpass(prompt="Enter password: ")
                     proc.write(password + "\n")
             except EOFError:

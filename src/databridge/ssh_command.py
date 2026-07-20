@@ -33,7 +33,7 @@ def scp_command(
     try:
         connection = Connection(host=host, user=user)
         connection.open()
-    except (AuthenticationException, SSHException) as e:
+    except AuthenticationException, SSHException:
         if password is None:
             password = click.prompt(
                 "Password for remote server authentication",
@@ -57,10 +57,10 @@ def scp_command(
     ) as progress:
         files = list(source.rglob("*"))
         current_task = progress.add_task(
-            '[green]Current file', total=100, visible=False
+            "[green]Current file", total=100, visible=False
         )
         total_task = progress.add_task(
-            f"[cyan]Uploading files",
+            "[cyan]Uploading files",
             total=len(files),
         )
         for path in files:
