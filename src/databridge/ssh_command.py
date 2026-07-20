@@ -94,7 +94,7 @@ def scp_command(
                     remote_path,
                     callback=lambda sent, total: progress.update(
                         current_task,
-                        advance=sent,
+                        current=sent,
                         total=total,
                     ),
                 )
