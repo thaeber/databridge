@@ -1,4 +1,12 @@
 <!-- insertion marker -->
+<a name="v0.4.0"></a>
+
+## [v0.4.0](https://github.com/thaeber/databridge/compare/v0.3.0...v0.4.0) (2026-07-20)
+
+### Features
+
+- Skip password prompt if SSH key is present ([3891f89](https://github.com/thaeber/databridge/commit/3891f8974129833eb1ec436ef9b6172211e2e8d5))
+
 <a name="v0.3.0"></a>
 
 ## [v0.3.0](https://github.com/thaeber/databridge/compare/v0.2.0...v0.3.0) (2026-07-20)
