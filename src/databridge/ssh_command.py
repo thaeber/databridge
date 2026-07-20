@@ -95,30 +95,10 @@ def scp_command(
                 advance=1,
                 description=f"[cyan]Uploading files ({progress.tasks[total_task].completed}/{len(files)})",
             )
+            _logger_.info(f"Uploaded 'file://{rel}'")
 
         progress.remove_task(current_task)
 
     # close the connection
     _logger_.info(f"Closing connection to {host}")
     connection.close()
-
-
-def _upload_single_file(source, target, connection, sftp, path, progress: Progress):
-    rel = path.relative_to(source)
-    remote_path = (target / rel).as_posix()
-
-    if path.is_dir():
-        try:
-            sftp.mkdir(remote_path)
-        except IOError:
-            pass
-    else:
-        connection.run(f"mkdir -p {shlex.quote(Path(remote_path).parent.as_posix())}")
-        task = progress.add_task(
-            f"[green]Uploading {rel.name}", total=path.stat().st_size
-        )
-        sftp.put(
-            str(path),
-            remote_path,
-            callback=lambda sent, total: progress.update(task, advance=sent),
-        )
