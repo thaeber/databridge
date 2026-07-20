@@ -1,4 +1,12 @@
 <!-- insertion marker -->
+<a name="v0.4.6"></a>
+
+## [v0.4.6](https://github.com/thaeber/databridge/compare/v0.4.5...v0.4.6) (2026-07-20)
+
+### Bug Fixes
+
+- Update progress bar with bytes sent so far. ([04be308](https://github.com/thaeber/databridge/commit/04be3080ab81aebbae9172db2fec66916714b1ce))
+
 <a name="v0.4.5"></a>
 
 ## [v0.4.5](https://github.com/thaeber/databridge/compare/v0.4.4...v0.4.5) (2026-07-20)
